@@ -57,6 +57,7 @@
                             <form id="pay-form-{{ $item->id }}" action="{{ route('fe.pay') }}" method="POST" class="d-none">
                                 @csrf
                                 <input type="hidden" name="order_id" value="{{ $item->id }}">
+                                <input type="hidden" name="status" value="PAID">
                             </form>
                             <!-- Pay -->
                         @empty

@@ -227,6 +227,14 @@ class FrontendController extends Controller
         return view('fe.historyProduct', $data);
     }
 
+    public function pay(Request $request) {
+        $data           = Order::with('customer')->where('customer_id', Auth::user()->id)->find($request->order_id);
+        $data['status'] = $request->status;
+        $data->save();
+
+        return back();
+    }
+
     public function profile()
     {
         return view('fe.profile');
