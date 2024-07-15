@@ -230,6 +230,10 @@ class FrontendController extends Controller
     public function pay(Request $request) {
         $data           = Order::with('customer')->where('customer_id', Auth::user()->id)->find($request->order_id);
         $data['status'] = $request->status;
+        if($data['status'] == 'PAID') {
+            $data['payment_status'] = 2;
+            $data['note'] = 'Sudah terbayarkan pada tanggal dan jam ('.now().')';
+        }
         $data->save();
 
         return back();
