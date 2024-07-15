@@ -232,7 +232,7 @@ class FrontendController extends Controller
         $data['status'] = $request->status;
         if($data['status'] == 'PAID') {
             $data['payment_status'] = 2;
-            $data['note'] = 'Sudah terbayarkan pada tanggal dan jam ('.now().')';
+            $data['note']           = 'Sudah terbayarkan pada tanggal dan jam ('.now().')';
         }
         $data->save();
 
